@@ -17,6 +17,7 @@ trait HuffmanInterface {
   def decodedSecret: List[Char]
   def encode(tree: CodeTree)(text: List[Char]): List[Int]
   def convert(tree: CodeTree): List[(Char, List[Int])]
+  def convert2(tree: CodeTree): List[(Char, List[Int])]
   def quickEncode(tree: CodeTree)(text: List[Char]): List[Int]
   def frenchCode: CodeTree
   def secret: List[Int]
