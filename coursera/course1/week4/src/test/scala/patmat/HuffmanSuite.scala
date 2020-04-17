@@ -42,6 +42,33 @@ class HuffmanSuite {
       assertEquals("ab".toList, decode(t1, encode(t1)("ab".toList)))
     }
 
+  @Test def `decode List(0, 1)`: Unit =
+    new TestTrees {
+      assertEquals("ab".toList, decode(t1, List(0, 1)))
+    }
+
+  @Test def `encode "ab"`: Unit =
+    new TestTrees {
+      assertEquals(List(0, 1), encode(t1)("ab".toList))
+    }
+
+  // why do these tests fail??
+  /* java.lang.AssertionError: expected: scala.collection.immutable.$colon$colon<List((a,List(0)), (b,List(1)))>
+   but was: scala.collection.immutable.$colon$colon<List((a,List(0)), (b,List(1)))>
+
+scala.collection.immutable.$colon$colon<List((a,List(0)), (b,List(1)))>
+  ¯\_(ツ)_/¯
+scala.collection.immutable.$colon$colon<List((a,List(0)), (b,List(1)))>
+   */
+  @Test def `convert t1`: Unit =
+    new TestTrees {
+      assertEquals(List(("a", List(0)), ("b", List(1))) , convert(t1))
+    }
+
+  @Test def `convert2 t1`: Unit =
+    new TestTrees {
+      assertEquals(List(("a", List(0)), ("b", List(1))) , convert2(t1))
+    }
 
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(10 * 1000)
 }
